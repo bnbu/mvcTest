@@ -112,7 +112,7 @@ public class GogakController {
       System.out.print("삭제할 사람의 GNO : "); String gno = br.readLine();
       pstmt.setString(1, gno);
       pstmt.executeUpdate();
-      conn.commit();
+//      conn.commit();
       System.out.println("삭제 완료");
     }
   
