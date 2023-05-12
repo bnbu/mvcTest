@@ -115,4 +115,37 @@ public class GogakController {
         System.out.println();
       } // while end
     }
+    
+public static void SelectWhere(String className) throws SQLException, IOException { 
+		
+		pstmt = conn.prepareStatement("select * from " + className + " where gno = ?");
+		System.out.println("검색하고자 하는 회원의 회원번호를 입력하시오");
+		int gno = Integer.parseInt(br.readLine());
+		
+		pstmt.setInt(1, gno);
+        rs = pstmt.executeQuery();
+        System.out.println();
+		
+        ResultSetMetaData rsmd =  rs.getMetaData();
+		int count = rsmd.getColumnCount();
+		
+		while (rs.next()) {
+			for (int i = 1; i <= count; i++) {
+				
+				switch (rsmd.getColumnType(i)) {
+				case Types.NUMERIC:	
+				case Types.CHAR:
+					System.out.println(rsmd.getColumnLabel(i) + ":" + rs.getString(i) + " ");
+					break;
+					
+				default:
+					System.out.println(rsmd.getColumnLabel(i) + ":" + rs.getString(i) + " ");
+					break;
+					
+				}
+			} 
+			System.out.println();
+		} 
+
+	}
 }
