@@ -16,7 +16,7 @@ public class ConnectionHelper {
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB명 ", "song", "Thdrltjr12**");
             } else if (dsn.equalsIgnoreCase("oracle")) {
                 Class.forName("oracle.jdbc.OracleDriver");
-                conn = DriverManager.getConnection("jdbc:oracle:thin:@edudb_high?TNS_ADMIN=C:/Wallet_edudb", "song",
+                conn = DriverManager.getConnection("jdbc:oracle:thin:@edudb_high?TNS_ADMIN=./src/main/lib/Wallet_edudb", "song",
                         "Thdrltjr12**");
             }
             System.out.println("연결 성공");
