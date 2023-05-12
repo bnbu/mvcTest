@@ -1,8 +1,8 @@
 package controller;
-
 import java.sql.*;
 import java.util.*;
 
+import util.CloseHelper;
 import model.GogakVO;
 import util.ConnectionHelper;
 
@@ -23,6 +23,13 @@ public class GogakController {
     
     static void menu() {
         
+    }
+  
+    public static void close() throws Exception {
+      CloseHelper.close(conn);
+      CloseHelper.close(stmt);
+      CloseHelper.close(pstmt);
+      CloseHelper.close(rs);
     }
     
     private static void insert(String name) throws IOException {
@@ -78,13 +85,11 @@ public class GogakController {
     }
     
     static void delete(String className) throws Exception {
-        String sql = "DELETE FROM " + className + " WHERE GNO = ?";
-        pstmt = conn.prepareStatement(sql);
-        System.out.print("삭제할 사람의 GNO : ");
-        pstmt.setString(1, br.readLine());
-        pstmt.executeUpdate();
-        
-        System.out.print("삭제 완료");
+      pstmt = conn.prepareStatement("DELETE FROM " + className + " WHERE GNO = ?");
+      System.out.print("삭제할 사람의 GNO : "); String gno = br.readLine();
+      pstmt.setString(1, gno);
+      pstmt.executeUpdate();
+      conn.commit();
+      System.out.println("삭제 완료");
     }
-
 }
