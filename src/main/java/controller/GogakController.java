@@ -40,7 +40,7 @@ public class GogakController {
             case 2: insert(vo.getClassName()); break;
             case 3: update(vo.getClassName()); break;
             case 4: delete(vo.getClassName()); break;
-//            case 5: SelectWhere(vo.getClassName()); break;
+            case 5: SelectWhere(vo.getClassName()); break;
             case 0: close(); System.out.println("프로그램을 종료합니다.");
             System.exit(0); break;
             
