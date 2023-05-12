@@ -2,7 +2,7 @@
 
 ### 프로젝트 클론 후 할 일
 1. src/main/lib/oracle.properties 파일 내 자신의 DB정보 입력하기
-2. jdbc 관련 라이브러리 다운로드 후 프로젝트에 추가
+2. jdbc 관련 라이브러리 다운로드 후 프로젝트에 추가 [ojdbc8 다운로드 링크](https://www.oracle.com/kr/database/technologies/appdev/jdbc-downloads.html)
 
 ### 프로젝트 
 * 메뉴 <br>
