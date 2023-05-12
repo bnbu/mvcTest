@@ -24,7 +24,15 @@ public class ConnectionHelper {
 	}
 	
 	public static void menuHelp() {
-		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=JDBC Query=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-		System.out.println("0. rollback \t 1. 전체목록\t 2. 삽입\t\t 3. 수정\n4. 삭제\t\t 5. 조건 검색\t 6. 종료\t\t 9. commit");
+			
+			System.out.println("\n=-=-=-=-=-=-=-= 고객 관리 =-=-=-=-=-=-=-=");
+			System.out.println("\t 1. 전 체 보 기");
+			System.out.println("\t 2. 레코드 추가");
+			System.out.println("\t 3. 레코드 수정");
+			System.out.println("\t 4. 레코드 삭제");
+			System.out.println("\t 5. 조건에 의한 검색(ex> gno)");
+			System.out.println("\t 0. 프로그램 종료");
+			System.out.println("\t >> 원하는 메뉴 선택하세요.");
+		
 	}
 }

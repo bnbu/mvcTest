@@ -2,6 +2,7 @@ package controller;
 import java.sql.*;
 import java.util.*;
 
+import dbConn.util.ConnectionSingletonHelper;
 import util.CloseHelper;
 import model.GogakVO;
 import util.ConnectionHelper;
@@ -21,9 +22,25 @@ public class GogakController {
         br = new BufferedReader(new InputStreamReader(System.in));
     }
     
-    static void menu() {
-        
-    }
+    public static void menu() throws Exception {
+		GogakVO vo = new GogakVO();
+		
+		while( true ) {
+			System.out.println();
+			ConnectionHelper.menuHelp();
+			
+			switch ( Integer.parseInt(br.readLine()) ) {
+			case 1: selectAll(vo.getClassName()); break;
+			case 2: insert(vo.getClassName()); break;
+			case 3: update(vo.getClassName()); break;
+			case 4: delete(vo.getClassName()); break;
+//			case 5: SelectWhere(vo.getClassName()); break;
+			case 0: close(); System.out.println("프로그램을 종료합니다.");
+			System.exit(0); break;
+			
+			} // switch end
+		} // while end
+	} // menu end
   
     public static void close() throws Exception {
       CloseHelper.close(conn);
