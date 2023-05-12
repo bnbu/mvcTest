@@ -92,4 +92,27 @@ public class GogakController {
       conn.commit();
       System.out.println("삭제 완료");
     }
+  
+    public static void selectAll(String className) throws SQLException {
+      rs = stmt.executeQuery("Select * from " + className); // class name <- gogak 고정
+
+      ResultSetMetaData rsmd = rs.getMetaData();
+      int count = rsmd.getColumnCount();
+      System.out.println("모든 회원 정보를 출력합니다");
+      System.out.println();
+      while (rs.next()) {
+        for (int i = 1; i <= count; i++) {
+          switch (rsmd.getColumnType(i)) {
+          case Types.NUMERIC:
+          case Types.CHAR:
+            System.out.println(rsmd.getColumnLabel(i) + ":" + rs.getString(i) + " ");
+            break;
+          default:
+            System.out.println(rsmd.getColumnLabel(i) + ":" + rs.getString(i) + " ");
+            break;
+          }// switch end
+        } // for end
+        System.out.println();
+      } // while end
+    }
 }
