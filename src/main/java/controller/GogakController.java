@@ -24,7 +24,7 @@ public class GogakController {
     public static void connect() throws Exception {
         conn = ConnectionHelper.getConnection("oracle");
         stmt = conn.createStatement();
-        conn.setAutoCommit(false);
+//        conn.setAutoCommit(false);
         br = new BufferedReader(new InputStreamReader(System.in));
     }
     
@@ -139,7 +139,7 @@ public class GogakController {
       } // while end
     }
     
-public static void SelectWhere(String className) throws SQLException, IOException { 
+    public static void SelectWhere(String className) throws SQLException, IOException { 
 		
 		pstmt = conn.prepareStatement("select * from " + className + " where gno = ?");
 		System.out.println("검색하고자 하는 회원의 회원번호를 입력하시오");
