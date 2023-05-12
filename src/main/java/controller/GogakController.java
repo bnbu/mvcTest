@@ -1,13 +1,18 @@
 package controller;
-import java.sql.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
 
-import dbConn.util.ConnectionSingletonHelper;
-import util.CloseHelper;
 import model.GogakVO;
+import util.CloseHelper;
 import util.ConnectionHelper;
-
-import java.io.*;
 public class GogakController {
     static Connection conn;
     static Statement stmt;
@@ -15,32 +20,32 @@ public class GogakController {
     static ResultSet rs;
     static BufferedReader br;
     
-    static void connect() throws Exception {
-        conn = ConnectionHelper.getConnection();
+    public static void connect() throws Exception {
+        conn = ConnectionHelper.getConnection("oracle");
         stmt = conn.createStatement();
         conn.setAutoCommit(false);
         br = new BufferedReader(new InputStreamReader(System.in));
     }
     
     public static void menu() throws Exception {
-		GogakVO vo = new GogakVO();
-		
-		while( true ) {
-			System.out.println();
-			ConnectionHelper.menuHelp();
-			
-			switch ( Integer.parseInt(br.readLine()) ) {
-			case 1: selectAll(vo.getClassName()); break;
-			case 2: insert(vo.getClassName()); break;
-			case 3: update(vo.getClassName()); break;
-			case 4: delete(vo.getClassName()); break;
-//			case 5: SelectWhere(vo.getClassName()); break;
-			case 0: close(); System.out.println("프로그램을 종료합니다.");
-			System.exit(0); break;
-			
-			} // switch end
-		} // while end
-	} // menu end
+        GogakVO vo = new GogakVO();
+        
+        while( true ) {
+            System.out.println();
+            ConnectionHelper.menuHelp();
+            
+            switch ( Integer.parseInt(br.readLine()) ) {
+            case 1: selectAll(vo.getClassName()); break;
+            case 2: insert(vo.getClassName()); break;
+            case 3: update(vo.getClassName()); break;
+            case 4: delete(vo.getClassName()); break;
+//            case 5: SelectWhere(vo.getClassName()); break;
+            case 0: close(); System.out.println("프로그램을 종료합니다.");
+            System.exit(0); break;
+            
+            } // switch end
+        } // while end
+    } // menu end
   
     public static void close() throws Exception {
       CloseHelper.close(conn);
